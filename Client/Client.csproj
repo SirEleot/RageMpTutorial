@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>Tuter</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>F:\GTAV\dotnet\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="rage-sharp">
+      <HintPath>F:\GTAV\dotnet\rage-sharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="del &quot;E:\RageMP\client_packages\cs_packages\*.*&quot; /Q&#xD;&#xA;for /R %25CD%25 %25%25i in (*.cs) do (&#xD;&#xA;xcopy %25%25i &quot;E:\RageMP\client_packages\cs_packages\&quot; /Q /Y /EXCLUDE:exclude.txt&#xD;&#xA;)" />
+  </Target>
+
+</Project>
